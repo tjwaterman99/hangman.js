@@ -8,7 +8,7 @@ let hangman = ref(new Hangman("This is a sentence"))
 <template>
   <div>
     <div>
-      <span v-for="char of available_chars" @click="hangman.guessLetter(char)">{{  char  }}</span>
+      <Letter v-for="char of available_chars" @click="hangman.guessLetter(char)" :letter=char :guessed="hangman.guessed_letters.includes(char)" :matched="hangman.letters.includes(char)"></Letter>
     </div>
     <div>Letters remaining: {{ hangman.guesses_left }}</div>
     <div>Letters guessed: {{ hangman.guessed_letters }}</div>
