@@ -1,17 +1,17 @@
 <script setup>
 const props = defineProps(['letter', 'guessed', 'matched'])
 
-const color = computed(() => {
+const bg = computed(() => {
     if (!props.guessed) {
-        return 'grey'
+        return 'bg-gray-200'
     } else if (props.matched) {
-        return 'green'
+        return 'bg-green-200'
     } else {
-        return 'red'
+        return 'bg-red-200'
     }
 })
 </script>
 
 <template>
-    <div :style="{color: color, padding: '0.5em', border: '1px solid black'}">{{ props.letter }}</div>
+    <div :class='["m-1", "p-1", bg]'>{{ props.letter }}</div>
 </template>
