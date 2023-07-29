@@ -1,14 +1,14 @@
 <script setup>
-import { Hangman } from 'hangman-js';
+import { Hangman, generateSentence } from 'hangman-js';
 
-let available_chars = 'abcdefghijklmnopqrstuvwxyz'.split('')
-let hangman = ref(new Hangman("This is a sentence"))
+let sentence = generateSentence()
+let hangman = ref(new Hangman(sentence))
 </script>
 
 <template>
   <div class="flex justify-center">
   <div class="max-w-lg">
-    <GameStatusBanner :has-won="hangman.hasWon()" :isOver="hangman.isOver()" :guessesRemaining="hangman.guessesRemaining()"/>
+    <GameStatusBanner :game="hangman"/>
     <GameViewPanel :game="hangman" />
     <GameKeyboardConsole :game="hangman" />    
   </div>

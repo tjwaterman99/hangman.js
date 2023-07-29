@@ -1,21 +1,21 @@
 <script setup>
 
-let props = defineProps(['hasWon', 'isOver', 'guessesRemaining'])
+let props = defineProps(['game'])
 
 const text = computed(() => {
-    if (props.hasWon) {
+    if (props.game.hasWon()) {
         return "You win! 🎉"
-    } else if (props.isOver) {
+    } else if (props.game.isOver()) {
         return "You lost 😢"
     } else {
-        return `${props.guessesRemaining} guesses left...`
+        return `${props.game.guessesRemaining()} guesses left...`
     }
 })
 
 const bg = computed(() => {
-    if (!props.isOver) {
+    if (!props.game.isOver()) {
         return ''
-    } else if (props.hasWon) {
+    } else if (props.game.hasWon()) {
         return 'bg-green-200'
     } else {
         return 'bg-red-200'
@@ -23,9 +23,9 @@ const bg = computed(() => {
 })
 
 const border_color = computed(() => {
-    if (!props.isOver) {
+    if (!props.game.isOver()) {
         return ''
-    } else if (props.hasWon) {
+    } else if (props.game.hasWon()) {
         return 'border-green-400'
     } else {
         return 'border-red-400'

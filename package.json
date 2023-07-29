@@ -9,7 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "hangman-js": "^1.14.0"
+    "hangman-js": "^1.15.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
