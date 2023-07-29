@@ -13,5 +13,5 @@ const bg = computed(() => {
 </script>
 
 <template>
-    <div :class='["m-1", "p-1", "w-12", "h-12", "flex", "items-center", "justify-center", bg]'>{{ props.letter }}</div>
+    <div :class='["m-1", "p-1", "lg:w-8", "lg:h-8", "w-7", "h-7", "flex", "items-center", "justify-center", bg]'>{{ props.letter }}</div>
 </template>

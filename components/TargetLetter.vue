@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['letter', 'guessed'])
+const props = defineProps(['letter', 'guessed', 'game'])
 
 
 
@@ -11,11 +11,19 @@ const border = computed(() => {
     }
 })
 
+const text_color = computed(() => {
+    if (props.guessed) {
+        return 'text-slate-800'
+    } else {
+        return 'text-slate-300'
+    }
+})
+
 </script>
 
 <template>
-    <div :class='["m-1", "p-1", "w-8", "h-8", "flex", "items-center", "justify-center", border]'>
-        <span v-if="props.guessed">
+    <div :class='["m-1", "p-1", "w-8", "h-8", "flex", "items-center", "justify-center", "bg-gray-100", border, text_color]'>
+        <span v-if="props.guessed || game.isOver()">
             {{ props.letter }}
         </span>
     </div>
