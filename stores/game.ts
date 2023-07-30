@@ -12,7 +12,10 @@ export const useGameStore = defineStore({
     },
     actions: {
         createGame() {
-            this.params = createGame()
+            let settingsStore = useSettingsStore()
+            settingsStore.load()
+            let { settings } = storeToRefs(settingsStore)
+            this.params = createGame(settings.value.guesses_allowed)
         },
 
         guessLetter(letter: string) {

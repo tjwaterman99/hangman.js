@@ -2,7 +2,8 @@
 // import { Hangman } from 'hangman-js';
 
 let gameStore = useGameStore()
-// TODO: we can read from localstorage instead
+let settingsStore = useSettingsStore()
+settingsStore.load()
 gameStore.createGame()
 </script>
 
