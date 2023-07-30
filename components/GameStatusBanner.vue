@@ -1,21 +1,22 @@
 <script setup>
 
-let props = defineProps(['game'])
+let gameStore = useGameStore()
+let { game } = storeToRefs(gameStore)
 
 const text = computed(() => {
-    if (props.game.hasWon()) {
+    if (game.value.hasWon()) {
         return "You win! 🎉"
-    } else if (props.game.isOver()) {
+    } else if (game.value.isOver()) {
         return "You lost 😢"
     } else {
-        return `${props.game.guessesRemaining()} guesses left...`
+        return `${game.value.guessesRemaining()} guesses left...`
     }
 })
 
 const bg = computed(() => {
-    if (!props.game.isOver()) {
+    if (!game.value.isOver()) {
         return ''
-    } else if (props.game.hasWon()) {
+    } else if (game.value.hasWon()) {
         return 'bg-green-200'
     } else {
         return 'bg-red-200'
@@ -23,9 +24,9 @@ const bg = computed(() => {
 })
 
 const border_color = computed(() => {
-    if (!props.game.isOver()) {
+    if (!game.value.isOver()) {
         return ''
-    } else if (props.game.hasWon()) {
+    } else if (game.value.hasWon()) {
         return 'border-green-400'
     } else {
         return 'border-red-400'
@@ -35,7 +36,8 @@ const border_color = computed(() => {
 </script>
 
 <template>
-    <div :class="['flex', 'flex-grow', 'justify-center', 'mt-4', 'py-2', 'rounded-md', bg, border_color, 'border-2']">
-        <div class="text-center">{{ text }}</div>
+    <div :class="['flex', 'flex-grow', 'justify-between', 'mt-4', 'py-2', 'rounded-md', bg, border_color, 'border-2']">
+        <div class="text-center px-2 mx-2">{{ text }}</div>
+        <div class="text-center px-2 mx-2 bg-sky-300 rounded-md" @click="gameStore.createGame()">New Game</div>
     </div>
 </template>
