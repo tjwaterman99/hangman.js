@@ -5,6 +5,7 @@ let { settings } = storeToRefs(settingsStore)
 </script>
 
 <template>
+    <Navbar />
     <h1>Settings</h1>
     <form @submit="settingsStore.flush()">
         <span>Guesses allowed: </span>

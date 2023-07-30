@@ -10,6 +10,7 @@ gameStore.createGame()
 <template>
   <div class="flex justify-center">
   <div class="max-w-lg">
+    <Navbar />
     <GameStatusBanner/>
     <GameViewPanel/>
     <GameKeyboardConsole />    
