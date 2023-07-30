@@ -17,7 +17,7 @@ export const useGameStore = defineStore({
 
         guessLetter(letter: string) {
             this.game.addGuess(letter)
-            this.$patch({params: game.serialize()})
+            this.$patch({params: this.game.serialize()})
         }
     }
 })
