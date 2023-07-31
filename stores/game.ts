@@ -2,9 +2,16 @@ import { Hangman, HangmanInterface, createGame } from 'hangman-js';
 import { defineStore } from 'pinia';
 
 
+// There's a race condition going on where there are
+// users of the store that want to access the getter
+// before the params of the state have been set.
 export const useGameStore = defineStore({
     id: 'game-store',
-    state: () => ({params: {} as HangmanInterface}),
+    state: () => ({params: {
+        sentence: '',
+        guesses: [],
+        num_guesses: 10
+    } as HangmanInterface}),
     getters: {
         game: (state) => {
             return new Hangman(state.params)
