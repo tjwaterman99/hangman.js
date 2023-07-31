@@ -4,7 +4,7 @@
 let gameStore = useGameStore()
 let settingsStore = useSettingsStore()
 settingsStore.load()
-gameStore.createGame()
+gameStore.load()
 </script>
 
 <template>
