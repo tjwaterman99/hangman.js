@@ -33,9 +33,11 @@ const border_color = computed(() => {
     }
 })
 
+
+
 function createGame() {
     let result = game.value.getResult()
-    console.log(result)
+    $fetch('/api/results', {method: 'post', body: {data: result}})
     gameStore.createGame()
 }
 
