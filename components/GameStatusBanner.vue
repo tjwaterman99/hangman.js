@@ -34,10 +34,12 @@ const border_color = computed(() => {
 })
 
 
-
+// TODO: load a user_id, we can use a composoble I think for just pulling it from localstorage
 function createGame() {
-    let result = game.value.getResult()
-    $fetch('/api/results', {method: 'post', body: {data: result}})
+    let game_result = game.value.getResult()
+    let user = getUser().load()
+    let results = {user_id: user.id, ...game_result}
+    $fetch('/api/results', {method: 'post', body: {data: results}})
     gameStore.createGame()
 }
 

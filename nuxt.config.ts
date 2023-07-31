@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     [
       '@pinia/nuxt', {'autoImports': ['defineStore', 'storeToRefs']}
-    ]
+    ],
+    '@nuxtjs/supabase'
   ],
   imports: {
     dirs: [
