@@ -33,11 +33,17 @@ const border_color = computed(() => {
     }
 })
 
+function createGame() {
+    let result = game.value.getResult()
+    console.log(result)
+    gameStore.createGame()
+}
+
 </script>
 
 <template>
     <div :class="['flex', 'flex-grow', 'justify-between', 'mt-4', 'py-2', 'rounded-md', bg, border_color, 'border-2']">
         <div class="text-center px-2 mx-2">{{ text }}</div>
-        <div class="text-center px-2 mx-2 bg-sky-300 rounded-md" @click="gameStore.createGame()">New Game</div>
+        <div class="text-center px-2 mx-2 bg-sky-300 rounded-md" @click="createGame()">New Game</div>
     </div>
 </template>
