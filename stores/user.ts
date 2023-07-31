@@ -33,7 +33,6 @@ export const getUser = defineStore({
         flush: function() {
             if (process.client) {
                 localStorage.setItem('user', JSON.stringify(this.user))
-                console.log(`Flushed ${JSON.stringify(this.user)}`)
             }
             return this.user
         }

@@ -14,7 +14,6 @@ export const useSettingsStore = defineStore({
         updateGuessesAllowed(value: number) {
             this.settings.guesses_allowed = value
             this.flush()
-            console.log("Updated guesses allowed")
             return this.settings
         },
 
